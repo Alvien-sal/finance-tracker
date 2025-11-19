@@ -10,29 +10,59 @@
                     Register
                 </h1>
 
-                 <form method="POST" action="\register" class="flex flex-col gap-4 ">
+                 <form method="POST" action="/register" class="flex flex-col gap-4 ">
 
                         @csrf
+
+                            <label>
+
+                                <input type="string"
+                                    name="name" 
+                                    class="login"
+                                    value="{{old('name')}}"
+                                    required
+                                    autofocus   
+                                >
+                                
+                                <span>Name</span>
+
+                                @error('name')
+                                    {{$message}}
+                                @enderror
+
+                            </label>
+                            
+
                             <label>
 
                                 <input type="email"
                                     name="email"
                                     class="border-2"
+                                    value="{{old('email')}}"
                                     required
                                     autofocus
                                 >
                                 <span>Email</span>
 
+                                @error('email')
+                                    {{$message}}
+                                @enderror
+
                             </label>
 
                             <label>
                                 <input type="password"
-                                name="login"
+                                name="password"
                                 class="border-2"
                                 required
                                 autofocus>
 
                                 <span>Password</span>
+
+                                @error('password')
+                                    {{$message}}
+                                @enderror
+
                             </label>
                             
                             <div class="form-control mt-8">

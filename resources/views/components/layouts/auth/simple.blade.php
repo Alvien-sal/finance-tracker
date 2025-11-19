@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
     <head>
-        @include('partials.head')
+        {{-- @include('partials.head') --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <title>{{ $title ?? 'My App' }}</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
+    @php
+        $user = auth()->user();
+    @endphp
+
     </head>
-    <body class="min-h-screen bg-white antialiased dark:bg-linear-to-b dark:from-neutral-950 dark:to-neutral-900">
-        <div class="bg-background flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
-            <div class="flex w-full max-w-sm flex-col gap-2">
-                <a href="{{ route('home') }}" class="flex flex-col items-center gap-2 font-medium" wire:navigate>
-                    <span class="flex h-9 w-9 mb-1 items-center justify-center rounded-md">
-                        <x-app-logo-icon class="size-9 fill-current text-black dark:text-white" />
-                    </span>
-                    <span class="sr-only">{{ config('app.name', 'Laravel') }}</span>
-                </a>
-                <div class="flex flex-col gap-6">
-                    {{ $slot }}
-                </div>
-            </div>
+    <body class="w-full h-full flex flex-col">
+        <x-layouts.app.header :user="$user"/>
+        
+        <div class="flex flex-col gap-6">
+            {{ $slot }}
+        </div>
         </div>
         @fluxScripts
     </body>

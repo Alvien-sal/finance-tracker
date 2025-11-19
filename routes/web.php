@@ -4,19 +4,25 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\OneTimeExpenseController;
 use App\Http\Controllers\Auth\Login;
+use App\Http\Controllers\Auth\Logout;
+use App\Http\Controllers\Auth\Register;
 
-Route::view('', 'dashboard')->middleware('auth')->name("dashboard");
+
+Route::get('/', [DashboardController::class, 'index'] )->middleware('auth')->name("dashboard");
 
 route::view('login', 'login')->name("login");
 
-Route::post('/login', [LoginController::class, 'authUser']);
+Route::post('/login', Login::class);
 
 route::view('register', 'register')->name("register");
 
-Route::post('/register', [RegisterController::class, 'regUser']);
+Route::post('/register', Register::class);
+
+Route::post('/logout', Logout::class)->name('logout');
+
+Route::get('/expense/onetime/create', [OneTimeExpenseController::class, 'create'])->middleware('auth')->name("oneTime.Create");
 
 // Route::get('/', function () {
 //     return view('welcome');

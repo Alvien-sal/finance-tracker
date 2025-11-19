@@ -9,12 +9,13 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
     <title>{{ $title ?? 'My App' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 <body>
 
     <div class="w-screen h-screen flex flex-col">
 
-         <x-layouts.app.header/>
+         <x-layouts.app.header />
 
         <main class="flex-1">
             {{$slot}}

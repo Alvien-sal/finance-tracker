@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
+use App\Models\OneTimeExpense;
+use App\Models\RecurringExpenses;
 
 class User extends Authenticatable
 {
@@ -60,5 +62,15 @@ class User extends Authenticatable
             ->take(2)
             ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
+    }
+
+    public function oneTimeExpenses(): HasMany
+    {
+        return $this->HasMany(OneTimeExpense::class);
+    }
+
+    public function recurringExpenses(): HasMany
+    {
+        return $this->HasMany(RecurringExpense::class);
     }
 }

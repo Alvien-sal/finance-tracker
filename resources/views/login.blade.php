@@ -13,27 +13,38 @@
                  <form method="POST" action="\login" class="flex flex-col gap-4 ">
 
                         @csrf
+
+                    
+
                             <label>
 
                                 <input type="email"
                                     name="email" 
-                                    class="border-2"
+                                    class="login"
                                     required
                                     autofocus   
                                 >
                                 
                                 <span>Email</span>
 
+                                @error('email')
+                                    {{$message}}
+                                @enderror
+
                             </label>
 
                             <label>
                                 <input type="password"
                                 name="password"
-                                class="border-2"
+                                class="login"
                                 required
                                 autofocus>
 
                                 <span>Password</span>
+
+                                @error('password')
+                                    {{$message}}
+                                @enderror
                             </label>
                             
                             <div class="form-control mt-8">
