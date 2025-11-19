@@ -12,4 +12,10 @@ class RegisterController extends Controller
         return view('register');
 
     }
+
+    public function regUser(){
+
+
+        return redirect()->route("dashboard")->with('success', 'You have been registered.');
+    }
 }

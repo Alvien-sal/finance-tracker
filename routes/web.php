@@ -8,13 +8,15 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Auth\Login;
 
-Route::get('/', [LoginController::class, 'index']);
+Route::view('', 'dashboard')->middleware('auth')->name("dashboard");
 
-Route::get('/login', [LoginController::class, 'authUser']);
+route::view('login', 'login')->name("login");
 
-Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authUser']);
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+route::view('register', 'register')->name("register");
+
+Route::post('/register', [RegisterController::class, 'regUser']);
 
 // Route::get('/', function () {
 //     return view('welcome');

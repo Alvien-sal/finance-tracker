@@ -10,7 +10,7 @@
                     Register
                 </h1>
 
-                 <form action="\login" class="flex flex-col gap-4 ">
+                 <form method="POST" action="\register" class="flex flex-col gap-4 ">
 
                         @csrf
                             <label>
@@ -27,7 +27,7 @@
 
                             <label>
                                 <input type="password"
-                                name="email"
+                                name="login"
                                 class="border-2"
                                 required
                                 autofocus>
@@ -37,12 +37,18 @@
                             
                             <div class="form-control mt-8">
                                 <button type="submit" class="btn btn-primary btn-sm w-full">
-                                    Log in
+                                    Sign up
                                 </button>
                             </div>
-                    </form>
+                            
+                            <span>
 
-                    <a href="/register" class="link link-primary"> Register</a>
+                                have an account?
+
+                                <a href="/login" class="link link-primary"> Login </a>
+                            </span>
+                            
+                    </form>
 
             </div>
         </div>

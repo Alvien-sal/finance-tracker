@@ -10,24 +10,25 @@
                     Login As 
                 </h1>
 
-                 <form action="\login" class="flex flex-col gap-4 ">
+                 <form method="POST" action="\login" class="flex flex-col gap-4 ">
 
                         @csrf
                             <label>
 
                                 <input type="email"
-                                    name="email"
+                                    name="email" 
                                     class="border-2"
                                     required
-                                    autofocus
+                                    autofocus   
                                 >
+                                
                                 <span>Email</span>
 
                             </label>
 
                             <label>
                                 <input type="password"
-                                name="email"
+                                name="password"
                                 class="border-2"
                                 required
                                 autofocus>
@@ -41,9 +42,11 @@
                                 </button>
                             </div>
                     </form>
-
-                    <a href="/register" class="link link-primary"> Register</a>
-
+                    
+                    <span>
+                        No Account?
+                        <a href="/register" class="link link-primary"> Register</a>
+                    </span>
             </div>
         </div>
 

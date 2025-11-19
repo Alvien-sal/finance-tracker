@@ -14,7 +14,7 @@ class LoginController extends Controller
 
         echo $request;
 
-        return redirect('/dashboard')->with('success', 'You have been logged out.');
+        return redirect()->route('dashboard')->with('success', 'You have been log in.');
 
     }
 }
