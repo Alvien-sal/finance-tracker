@@ -3,15 +3,18 @@
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardController as UserDashboardController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\OneTimeExpenseController;
 use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Auth\Logout;
-use App\Http\Controllers\Auth\Register as userRegister;
-use App\Http\Controllers\Auth\Admin\Register as adminRegister;
+use App\Http\Controllers\Auth\Register as UserRegister;
+// use App\Http\Controllers\Auth\Admin\Register as adminRegister;
+use App\Http\Middleware\RouteBasedOnRole;
 
+Route::get('/', [UserDashboardController::class, 'index'] )->middleware(['auth', RouteBasedOnRole::class])->name("dashboard");
 
-Route::get('/', [DashboardController::class, 'index'] )->middleware('auth')->name("dashboard");
+Route::get('/admin', [AdminDashboardController::class, 'index'] )->middleware(['auth'])->name("admin_dashboard");
 
 route::view('login', 'login')->name("login");
 Route::view('login/admin', 'admin.login');
@@ -20,9 +23,7 @@ Route::post('/login', Login::class);
 
 route::view('register', 'register')->name("register");
 
-Route::post('/register', userRegister::class);
-
-
+Route::post('/register', UserRegister::class);
 
 
 Route::post('/logout', Logout::class)->name('logout');
