@@ -17,8 +17,10 @@ class DashboardController extends Controller
 
         $expenses = Auth::user()->oneTimeExpenses()->get();
 
+        $role = Auth::user()->role()->get();
 
-        return view("dashboard", ['user' => Auth::user(), "expenses" => $expenses ]);
+
+        return view("dashboard", ['user' => Auth::user(), "expenses" => $expenses, 'role' => $role->first()->role ]);
 
 
     }

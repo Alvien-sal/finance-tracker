@@ -7,7 +7,7 @@
             <div class="card-body">
 
                 <h1 class="card-title text-xl">
-                    Login As 
+                    Admin Login
                 </h1>
 
                  <form method="POST" action="\login" class="flex flex-col gap-4 ">
@@ -60,7 +60,7 @@
                     </span>
 
                     <span>
-                        Are you an <a href="/login/admin" class="link link-primary">Admin</a>?
+                        Are you a <a href="/register">User</a>?
                     </span>
             </div>
         </div>

@@ -5,6 +5,8 @@
     <div class="flex flex-row p-4">
         
         <div class="flex-1">
+
+            {{$role}}
             
             <form class="flex justify-center" action="{{ route('oneTime.Create') }}">
             

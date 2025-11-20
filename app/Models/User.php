@@ -10,7 +10,9 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use App\Models\OneTimeExpense;
 use App\Models\RecurringExpenses;
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -73,5 +75,15 @@ class User extends Authenticatable
     public function recurringExpenses(): HasMany
     {
         return $this->HasMany(RecurringExpense::class);
+    }
+
+    /**
+     * Get the user associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function role(): HasOne
+    {
+        return $this->hasOne(Role::class);
     }
 }
