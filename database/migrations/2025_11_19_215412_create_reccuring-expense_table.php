@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('reccuring_expense', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
             $table->string('name');
             $table->enum('category', ['food', 'transport', 'entertainment', 'bills']);

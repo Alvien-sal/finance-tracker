@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('one_time_expense', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->enum('category', ['food', 'transport', 'entertainment', 'bills']);
             $table->decimal('amount', 10, 2);

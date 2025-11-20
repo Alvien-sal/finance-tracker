@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\OneTimeExpense;
 use Illuminate\Http\Request;
+use App\Enum\CategoryExpense;
+use Illuminate\Support\Facades\Auth;
+
 
 class OneTimeExpenseController extends Controller
 {
@@ -22,7 +25,7 @@ class OneTimeExpenseController extends Controller
     {
         //
 
-        return view("expense.oneTime.create");
+        return view("expense.oneTime.create", ['cats' => CategoryExpense::cases()]);
     }
 
     /**
@@ -30,7 +33,20 @@ class OneTimeExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'name' => "required|string",
+            'amount' => "required|numeric",
+            'category' => "required"
+        ]);
+
+        $expense = OneTimeExpense::create([
+            "name" => $validate['name'],
+            "amount" => $validate['amount'],
+            "category" => $validate['category'],
+            "user_id" => Auth::user()->id
+        ]);
+
+        return redirect()->route('dashboard');
     }
 
     /**

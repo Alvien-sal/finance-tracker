@@ -23,6 +23,7 @@ Route::post('/register', Register::class);
 Route::post('/logout', Logout::class)->name('logout');
 
 Route::get('/expense/onetime/create', [OneTimeExpenseController::class, 'create'])->middleware('auth')->name("oneTime.Create");
+Route::get('/expense/onetime/store', [OneTimeExpenseController::class, 'store'])->middleware('auth')->name("oneTime.Store");
 
 // Route::get('/', function () {
 //     return view('welcome');

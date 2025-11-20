@@ -18,8 +18,29 @@
 
         </div>
 
-        <div class="flex-4">
-            HII
+        <div class="flex-4 flex flex-col gap-4">
+            @foreach ($expenses as $expense )
+                <div class="card bg-base-100 w-96 shadow-sm">
+
+                    <div class="card-body">
+                        <div class="card-title">
+                            {{ $expense->name }}
+                        </div>
+                        
+                        <div class="text-sx">
+                            Category: {{ $expense->category }}
+                        </div>
+                        
+                        <div class="font-bold">
+                            ${{ $expense->amount }}
+                        </div>
+                        
+                    </div>
+
+                
+
+                </div>
+            @endforeach
         </div>
 
     </div>

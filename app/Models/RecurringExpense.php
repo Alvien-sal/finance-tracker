@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class RecurringExpense extends Model
 {
@@ -15,9 +16,9 @@ class RecurringExpense extends Model
 
     }
 
-        public function user(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->BelongsTo(User::class);
     }
 
 }
